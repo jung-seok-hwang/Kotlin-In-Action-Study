@@ -12,22 +12,21 @@ class TicketsService(
     private val ticketsRepository: TicketsRepository,
 ) {
 
-
-
     @Transactional
     fun buy(tickets: TicketsRequest): Tickets {
 
-        return try {
+        try {
             val findWithWriterLockBySeatNumber = ticketsRepository.findWithWriterLockBySeatNumber(tickets.seatNumber)
 
-            println(findWithWriterLockBySeatNumber)
-            Thread.sleep(2000)
-
             if (!findWithWriterLockBySeatNumber.purchaseStatus) {
-                findWithWriterLockBySeatNumber.buy(tickets.purchaseUser,tickets.purchaseStatus)
+                synchronized(findWithWriterLockBySeatNumber) {
+                    Thread.sleep(20000) // Simulate some processing time
+                    findWithWriterLockBySeatNumber.buy(tickets.purchaseUser, tickets.purchaseStatus)
+                    return findWithWriterLockBySeatNumber
+                }
             }
-
-            findWithWriterLockBySeatNumber
+            //마음에 안들어
+            throw IllegalArgumentException("다른 사용자가 이미 예약 했습니다.")
         } catch (e: Exception) {
             throw IllegalStateException("Failed to save ticket", e)
         }
