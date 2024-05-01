@@ -25,7 +25,7 @@ class TicketsService(
                     return findWithWriterLockBySeatNumber
                 }
             }
-            //마음에 안들어
+            
             throw IllegalArgumentException("다른 사용자가 이미 예약 했습니다.")
         } catch (e: Exception) {
             throw IllegalStateException("Failed to save ticket", e)
