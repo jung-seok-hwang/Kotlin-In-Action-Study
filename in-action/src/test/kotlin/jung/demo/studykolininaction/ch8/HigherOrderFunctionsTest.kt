@@ -29,9 +29,7 @@ class HigherOrderFunctionsTest {
 
         println(filter)
 
-
     }
-
 
     private fun String.filters(operation: (Char) -> Boolean): String {
         val str = StringBuilder()
@@ -43,5 +41,44 @@ class HigherOrderFunctionsTest {
 
         return str.toString()
 
+    }
+
+    @Test
+    fun apply_to_list() {
+
+        val list = apply_to_list(listOf(3, 7, 9, 10)) { it + it }
+
+        for (i in list) {
+            println(i)
+        }
+
+    }
+
+    private fun apply_to_list(list: List<Int>, apply: (Int) -> Int): List<Int> {
+
+        return list.map(apply)
+
+    }
+
+    @Test
+    fun main() {
+        val numbers = listOf(1, 2, 3, 4)
+        val doubledNumbers = higherOrderFunctionTransform(numbers) { x -> x * 2 }
+        println(doubledNumbers)  // 이 코드는 [2, 4, 6, 8]을 출력해야 합니다.
+    }
+
+    private fun higherOrderFunctionTransform(numbers: List<Int>, transform: (Int) -> Int): List<Int> {
+        val result = numbers.map {
+            index -> index * 2
+        }
+
+
+        val it = numbers.map {
+              it * 2
+        }
+
+        val higherOrderFunctionResult = numbers.map(transform)
+
+        return result
     }
 }
