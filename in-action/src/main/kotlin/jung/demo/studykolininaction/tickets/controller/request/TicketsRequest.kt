@@ -1,6 +1,6 @@
-package jung.demo.studykolininaction.ch5.controller.request
+package jung.demo.studykolininaction.tickets.controller.request
 
-import jung.demo.studykolininaction.ch5.entity.Tickets
+import jung.demo.studykolininaction.tickets.entity.Tickets
 
 
 data class TicketsRequest(

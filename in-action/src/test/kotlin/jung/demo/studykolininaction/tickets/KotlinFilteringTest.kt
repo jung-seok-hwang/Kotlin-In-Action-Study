@@ -1,4 +1,4 @@
-package jung.demo.studykolininaction.ch5
+package jung.demo.studykolininaction.tickets
 
 import org.junit.jupiter.api.Test
 

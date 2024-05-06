@@ -1,8 +1,8 @@
-package jung.demo.studykolininaction.ch5.controller
+package jung.demo.studykolininaction.tickets.controller
 
-import jung.demo.studykolininaction.ch5.application.TicketsService
-import jung.demo.studykolininaction.ch5.controller.request.TicketsRequest
-import jung.demo.studykolininaction.ch5.entity.Tickets
+import jung.demo.studykolininaction.tickets.application.TicketsService
+import jung.demo.studykolininaction.tickets.controller.request.TicketsRequest
+import jung.demo.studykolininaction.tickets.entity.Tickets
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping

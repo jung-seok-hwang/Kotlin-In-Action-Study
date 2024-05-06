@@ -1,4 +1,4 @@
-package jung.demo.studykolininaction.ch5
+package jung.demo.studykolininaction.tickets
 
 import jung.demo.studykolininaction.ch6.RunSomething
 import jung.demo.studykolininaction.ch6.User

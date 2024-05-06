@@ -1,9 +1,8 @@
-package jung.demo.studykolininaction.ch5.entity
+package jung.demo.studykolininaction.tickets.entity
 
 import com.example.hellospring.util.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
-import jung.demo.studykolininaction.ch5.controller.request.TicketsRequest
 
 @Entity
 class Tickets(

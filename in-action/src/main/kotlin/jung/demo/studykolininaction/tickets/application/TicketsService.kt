@@ -1,9 +1,9 @@
-package jung.demo.studykolininaction.ch5.application
+package jung.demo.studykolininaction.tickets.application
 
 import jakarta.transaction.Transactional
-import jung.demo.studykolininaction.ch5.controller.request.TicketsRequest
-import jung.demo.studykolininaction.ch5.entity.Tickets
-import jung.demo.studykolininaction.ch5.repository.TicketsRepository
+import jung.demo.studykolininaction.tickets.controller.request.TicketsRequest
+import jung.demo.studykolininaction.tickets.entity.Tickets
+import jung.demo.studykolininaction.tickets.repository.TicketsRepository
 import org.springframework.stereotype.Service
 
 

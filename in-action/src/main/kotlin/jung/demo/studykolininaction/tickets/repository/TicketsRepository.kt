@@ -1,7 +1,7 @@
-package jung.demo.studykolininaction.ch5.repository
+package jung.demo.studykolininaction.tickets.repository
 
 import jakarta.persistence.LockModeType
-import jung.demo.studykolininaction.ch5.entity.Tickets
+import jung.demo.studykolininaction.tickets.entity.Tickets
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Lock
 

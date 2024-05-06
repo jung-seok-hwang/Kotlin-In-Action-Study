@@ -1,4 +1,4 @@
-package jung.demo.studykolininaction.ch5.entity
+package jung.demo.studykolininaction.tickets.entity
 
 class Member(
     var name: String,
