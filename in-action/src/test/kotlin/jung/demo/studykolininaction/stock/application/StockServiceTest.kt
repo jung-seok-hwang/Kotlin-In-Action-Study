@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Executors
+import java.util.concurrent.locks.ReentrantLock
 import kotlin.test.assertEquals
 
 
@@ -54,8 +55,30 @@ class StockServiceTest @Autowired constructor(
         for (i in 0 until threadCount) {
             executorService.submit {
                 try {
-                    println("Decreasing stock for thread $i")
                     stockService.decrease(1L, 1L)
+                } finally {
+                    latch.countDown()
+                }
+            }
+        }
+        latch.await()
+
+        val stock = stockRepository.findById(1L).orElseThrow { NoSuchElementException("Stock not found!") }
+        assertEquals(0, stock.quantity)
+    }
+
+    @Test
+    @DisplayName("(동시에 100개의 요청) synchronized 적용해 동시 요청 처리")
+    fun requestsAtTheSameTimeSynchronized() {
+        val lock = ReentrantLock()
+        val threadCount = 100
+        val executorService = Executors.newFixedThreadPool(32)
+        val latch = CountDownLatch(threadCount)
+
+        for (i in 0 until threadCount) {
+            executorService.submit {
+                try {
+                    stockService.synchronized(1L, 1L)
                 } finally {
                     latch.countDown()
                 }

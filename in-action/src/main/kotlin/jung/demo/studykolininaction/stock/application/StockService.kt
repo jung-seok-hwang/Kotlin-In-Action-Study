@@ -17,4 +17,14 @@ class StockService (
 
         stockRepository.saveAndFlush(stock)
     }
+
+    @Synchronized
+    fun synchronized(id: Long, quantity: Long) {
+        val stock = stockRepository.findById(id).orElseThrow()
+
+        stock.decrease(quantity)
+
+        stockRepository.saveAndFlush(stock)
+    }
+
 }
